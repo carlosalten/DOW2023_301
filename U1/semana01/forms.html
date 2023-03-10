@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <h2>Formularios</h2>
+    <hr>
+
+    <form>
+        <div>
+            <label for="txtnombre">Nombre</label><br>
+            <input type="text" id="txtnombre" required>
+        </div> 
+        
+        <div>
+            <label for="txtemail">Email</label><br>
+            <input type="email" id="txtemail" required>
+        </div>
+
+        <div>
+            <label for="txtedad">Edad</label><br>
+            <input type="number" id="txtedad" min="0" max="100">
+        </div>
+
+        <div>
+            <label for="txtfechanacimiento">Fecha Nacimiento</label><br>
+            <input type="date" id="txtfechanacimiento">
+        </div>
+
+        <div>
+            <label for="cmbcarrera">Carrera</label><br>
+            <select id="cmdcarrera">
+                <option value="10">T.U. en Informática</option>
+                <option value="20">T.U. en Electricidad</option>
+                <option value="30">T.U. en Electrónica</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="radio" name="region" id="radiovalpo" checked>
+            <label for="radiovalpo">Región de Valparaíso</label>
+            <br>
+            <input type="radio" name="region" id="radionotvalpo">
+            <label for="radionotvalpo">Otra región</label>
+        </div>
+
+        <div>
+            <input type="checkbox">
+            Tiene gratuidad
+        </div>
+
+        <div>
+            <label for="txtcomentarios">Comentarios</label><br>
+            <textarea id="txtcomentarios"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</body>
+</html>
