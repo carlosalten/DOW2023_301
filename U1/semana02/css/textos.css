@@ -1,0 +1,64 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 12px;
+    background-color: lightgray;
+}
+
+h1{
+   font-size: 2.5em; 
+   text-decoration: underline;
+   color:#EF2E33;
+}
+
+p{
+    text-align: justify;
+}
+
+ul{
+    /* list-style-type: square; */
+    list-style-image: url('../images/iconos/star.png');
+    padding-left: 20px;
+}
+
+.parrafo-destacado{
+    color: darkblue;
+    font-style: italic;
+    line-height: 1.5em;
+}
+
+.caja-destacada{
+    background-color: white;
+    border: 2px dotted red;
+    /* padding: 5px; */
+    /* padding-left: 5px;
+    padding-right: 7px;
+    padding-top: 10px;
+    padding-bottom: 12px; */
+    /* padding: 10px 7px 12px 5px; */
+    padding: 7px 5px;
+}
+
+.lista-letras{
+    list-style-type: lower-alpha;
+}
+
+.texto-negrita{
+    font-weight: bold;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid blue;
+    padding: 5px;
+}
+
+th{
+    background-color: lightblue;
+}
+
+#titulo-donec{
+    color: #8E1A1C;
+}
