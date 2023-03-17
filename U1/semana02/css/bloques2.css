@@ -3,6 +3,10 @@
     height: 150px;
     border: 1px solid black;
     background-color: lightblue;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
 }
 
 .flex-container {
@@ -10,15 +14,20 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    height: 500px;
+    /* height: 500px; */
     /* align-items: stretch; */
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    margin-bottom: 10px;
 }
 
 #div-b {
-    order: -2;
+    flex-grow: 2;
 }
 
 #div-c {
-    order: 1;
+    flex-grow: 1;
+}
+
+#div-c2 {
+    flex-shrink: 2;
 }
