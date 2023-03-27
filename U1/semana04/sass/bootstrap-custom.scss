@@ -1,0 +1,28 @@
+//colors personalizados
+$primary: #e70a1b;
+$secondary: #9d5c28;
+$success: #5ca206;
+$info: #208e46;
+$warning: #ffbf67;
+$danger: #f10366;
+$light: #e3e3e1;
+$dark: #081648;
+
+//importar hojas de funciones y variables
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$custom-theme-colors: (
+    "attention":#F70000
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+//cambiar font
+// $font-family-base: "Trebuchet MS, sans-serif";
+// $font-size-base: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+$font-family-base: 'Roboto', sans-serif;
+
+//importar hoja de bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
