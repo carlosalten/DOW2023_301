@@ -1,0 +1,17 @@
+//colores
+$primary : #074469;
+$secondary : #026597;
+$success : #990099;
+$info : #0EADD8;
+$warning : #FCAF27;
+$danger : #D51E2D;
+$light : #CCCCCC;
+$dark : #333333;
+
+//cambiar font
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+$font-family-base: 'Roboto', sans-serif;
+$font-size-root: 12px;
+
+//import
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
