@@ -28,15 +28,17 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($jugadores as $index => $jugador)
                 <tr>
-                    <td class="align-middle">num</td>
-                    <td class="align-middle">rut</td>
-                    <td class="align-middle">apellido</td>
-                    <td class="align-middle">nombre</td>
-                    <td class="align-middle">numero camiseta</td>
-                    <td class="align-middle">posicion</td>
-                    <td class="align-middle">equipo</td>
+                    <td class="align-middle">{{$index+1}}</td>
+                    <td class="align-middle">{{$jugador->rut}}</td>
+                    <td class="align-middle">{{$jugador->apellido}}</td>
+                    <td class="align-middle">{{$jugador->nombre}}</td>
+                    <td class="align-middle">{{$jugador->numero_camiseta}}</td>
+                    <td class="align-middle">{{$jugador->posicion}}</td>
+                    <td class="align-middle">{{$jugador->equipo->nombre}}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

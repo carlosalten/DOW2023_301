@@ -12,4 +12,8 @@ class EquiposController extends Controller
         // return view('equipos.index',['equipos'=>$equipos]);
         return view('equipos.index',compact('equipos'));
     }
+
+    public function show(Equipo $equipo){
+        return view('equipos.show',compact('equipo'));
+    }
 }

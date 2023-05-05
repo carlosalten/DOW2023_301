@@ -4,9 +4,9 @@
 {{-- titulo --}}
 <div class="row mt-2">
     <div class="col-8">
-        <h3>Nombre Equipo: Lista de Jugadores</h3>
+        <h3>{{$equipo->nombre}}: Lista de Jugadores</h3>
         <span class="fw-bold">Cantidad de Jugadores: </span>
-        <XXX>
+        {{count($equipo->jugadores)}}
     </div>
     <div class="col-4 d-flex align-items-center justify-content-end">
         <a href="#" class="btn btn-success">Agregar Jugador</a>
@@ -28,14 +28,16 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($equipo->jugadores as $index=>$jugador)
                 <tr>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">rut</td>
-                    <td class="align-middle">apellido</td>
-                    <td class="align-middle">nombre</td>
-                    <td class="align-middle">numero camiseta</td>
-                    <td class="align-middle">posicion</td>
+                    <td class="align-middle">{{$index+1}}</td>
+                    <td class="align-middle">{{$jugador->rut}}</td>
+                    <td class="align-middle">{{$jugador->apellido}}</td>
+                    <td class="align-middle">{{$jugador->nombre}}</td>
+                    <td class="align-middle">{{$jugador->numero_camiseta}}</td>
+                    <td class="align-middle">{{$jugador->posicion}}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -44,7 +46,7 @@
 {{-- volver --}}
 <div class="row">
     <div class="col text-end">
-        <a href="#" class="btn btn-warning">Volver a Equipos</a>
+        <a href="{{route('equipos.index')}}" class="btn btn-warning">Volver a Equipos</a>
     </div>
 </div>
 @endsection
