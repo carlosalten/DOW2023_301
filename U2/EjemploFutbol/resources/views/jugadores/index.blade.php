@@ -8,7 +8,7 @@
         <p>Lista de todos los jugadores ingresados</p>
     </div>
     <div class="col-4 d-flex align-items-center justify-content-end">
-        <a href="#" class="btn btn-success">Agregar Jugador</a>
+        <a href="{{route('jugadores.create')}}" class="btn btn-success">Agregar Jugador</a>
     </div>
 </div>
 

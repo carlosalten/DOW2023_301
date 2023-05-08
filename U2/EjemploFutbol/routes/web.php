@@ -25,5 +25,8 @@ Route::get('/login',[HomeController::class,'login'])->name('home.login');
 
 Route::get('/equipos',[EquiposController::class,'index'])->name('equipos.index');
 Route::get('/equipos/{equipo}',[EquiposController::class,'show'])->name('equipos.show');
+Route::get('/equipos/{equipo}/edit',[EquiposController::class,'edit'])->name('equipos.edit');
 
 Route::get('/jugadores',[JugadoresController::class,'index'])->name('jugadores.index');
+Route::get('/jugadores/create',[JugadoresController::class,'create'])->name('jugadores.create');
+Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.store');

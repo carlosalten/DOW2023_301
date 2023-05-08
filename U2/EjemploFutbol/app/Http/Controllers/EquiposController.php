@@ -16,4 +16,8 @@ class EquiposController extends Controller
     public function show(Equipo $equipo){
         return view('equipos.show',compact('equipo'));
     }
+
+    public function edit(Equipo $equipo){
+        return view('equipos.edit',compact('equipo'));
+    }
 }

@@ -7,7 +7,7 @@
         <h3>Agregar Jugador</h3>
     </div>
     <div class="col-4 d-flex align-items-center justify-content-end">
-        <a href="#" class="btn btn-warning">Cancelar</a>
+        <a href="{{route('jugadores.index')}}" class="btn btn-warning">Cancelar</a>
     </div>
 </div>
 
@@ -16,7 +16,8 @@
     <div class="card">
         <div class="card-header bg-dark text-white">Ingrese los datos del nuevo jugador</div>
         <div class="card-body">
-            <form>
+            <form method="POST" action="{{route('jugadores.store')}}">
+                @csrf
                 {{-- rut --}}
                 <div class="mb-3">
                     <label for="rut" class="form-label">RUT</label>
@@ -69,7 +70,9 @@
                 <div class="mb-3">
                     <label class="form-label" for="equipo">Equipo</label>
                     <select id="equipo" name="equipo" class="form-control">
-
+                        @foreach($equipos as $equipo)
+                        <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
+                        @endforeach
                     </select>
                 </div>
                 {{-- botones --}}
