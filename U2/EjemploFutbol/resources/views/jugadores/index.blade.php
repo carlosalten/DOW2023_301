@@ -41,7 +41,14 @@
                     <td class="align-middle">{{$jugador->nombre}}</td>
                     <td class="align-middle">{{$jugador->numero_camiseta}}</td>
                     <td class="align-middle">{{$jugador->posicion}}</td>
-                    <td class="align-middle">{{$jugador->equipo->nombre}}</td>
+                    <td class="align-middle">
+                        {{-- {{$jugador->equipo!=null?$jugador->equipo->nombre:'Sin Equipo'}} --}}
+                        @if($jugador->equipo!=null)
+                        {{$jugador->equipo->nombre}}
+                        @else
+                        <span class="text-danger">Sin Equipo</span>
+                        @endif
+                    </td>
                     <td>
                         <div class="row">
                             {{-- borrar --}}
