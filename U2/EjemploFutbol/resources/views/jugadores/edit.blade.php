@@ -12,7 +12,8 @@
         <div class="card">
             <div class="card-header bg-dark text-white">Editar jugador {{$jugador->nombre}} {{$jugador->apellido}}</div>
             <div class="card-body">
-                <form method="POST" action="{{route('jugadores.store')}}">
+                <form method="POST" action="{{route('jugadores.update',$jugador->rut)}}">
+                    @method('put')
                     @csrf
                     {{-- rut --}}
                     <div class="mb-3">

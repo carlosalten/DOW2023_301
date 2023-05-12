@@ -43,9 +43,24 @@
                     <td class="align-middle">{{$jugador->posicion}}</td>
                     <td class="align-middle">{{$jugador->equipo->nombre}}</td>
                     <td>
-                        <a href="{{route('jugadores.edit',$jugador->rut)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
-                            <span class="material-icons">edit</span>
-                        </a>
+                        <div class="row">
+                            {{-- borrar --}}
+                            <div class="col text-end">
+                                <form method="POST" action="{{route('jugadores.destroy',$jugador->rut)}}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <span class="material-icons">delete</span>
+                                    </button>
+                                </form>
+                            </div>
+                            {{-- editar --}}
+                            <div class="col">
+                                <a href="{{route('jugadores.edit',$jugador->rut)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
+                                    <span class="material-icons">edit</span>
+                                </a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

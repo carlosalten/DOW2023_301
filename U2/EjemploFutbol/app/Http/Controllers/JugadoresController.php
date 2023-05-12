@@ -37,4 +37,22 @@ class JugadoresController extends Controller
         // return view('jugadores.edit',compact('jugador'));
         return view('jugadores.edit',compact(['jugador','equipos']));
     }
+
+    public function update(Request $request,Jugador $jugador){
+        $jugador->rut = $request->rut;
+        $jugador->nombre = $request->nombre;
+        $jugador->apellido = $request->apellido;
+        $jugador->numero_camiseta = $request->numero_camiseta;
+        $jugador->posicion = $request->posicion;
+        $jugador->equipo_id = $request->equipo;
+
+        $jugador->save();
+
+        return redirect()->route('jugadores.index');
+    }
+
+    public function destroy(Jugador $jugador){
+        $jugador->delete();
+        return redirect()->route('jugadores.index');
+    }
 }
