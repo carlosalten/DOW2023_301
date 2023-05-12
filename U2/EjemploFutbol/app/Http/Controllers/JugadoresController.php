@@ -30,4 +30,11 @@ class JugadoresController extends Controller
         $jugador->save();
         return redirect()->route('jugadores.index');
     }
+
+    public function edit(Jugador $jugador){
+        $equipos = Equipo::orderBy('nombre')->get();
+        
+        // return view('jugadores.edit',compact('jugador'));
+        return view('jugadores.edit',compact(['jugador','equipos']));
+    }
 }

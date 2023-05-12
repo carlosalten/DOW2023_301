@@ -20,4 +20,11 @@ class EquiposController extends Controller
     public function edit(Equipo $equipo){
         return view('equipos.edit',compact('equipo'));
     }
+
+    public function update(Request $request,Equipo $equipo){
+        $equipo->nombre = $request->nombre;
+        $equipo->entrenador = $request->entrenador;
+        $equipo->save();
+        return redirect()->route('equipos.index');
+    }
 }

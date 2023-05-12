@@ -1,5 +1,9 @@
 @extends('templates.master')
 
+@section('hojas-estilo')
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+@endsection
+
 @section('contenido-principal')
 {{-- titulo --}}
 <div class="row mt-2">
@@ -25,6 +29,7 @@
                     <th>Camiseta</th>
                     <th>Posición</th>
                     <th>Equipo</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +42,11 @@
                     <td class="align-middle">{{$jugador->numero_camiseta}}</td>
                     <td class="align-middle">{{$jugador->posicion}}</td>
                     <td class="align-middle">{{$jugador->equipo->nombre}}</td>
+                    <td>
+                        <a href="{{route('jugadores.edit',$jugador->rut)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
+                            <span class="material-icons">edit</span>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -50,4 +60,16 @@
         <a href="#" class="btn btn-warning">Volver a Equipos</a>
     </div>
 </div>
+@endsection
+
+@section('script-referencias')
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+@endsection
+
+@section('script-manual')
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+</script>
 @endsection
