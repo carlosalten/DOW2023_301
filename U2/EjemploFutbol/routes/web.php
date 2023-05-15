@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EquiposController;
 use App\Http\Controllers\JugadoresController;
+use App\Http\Controllers\PartidosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::delete('/equipos/{equipo}',[EquiposController::class,'destroy'])->name('e
 // Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.store');
 // Route::get('/jugadores/{jugador}/edit',[JugadoresController::class,'edit'])->name('jugadores.edit');
 Route::resource('/jugadores',JugadoresController::class)->parameter('jugadores','jugador');
+
+Route::resource('/partidos',PartidosController::class);

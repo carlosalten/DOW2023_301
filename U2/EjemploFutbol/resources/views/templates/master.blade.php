@@ -52,7 +52,7 @@
                             <a class="nav-link @if(Route::current()->getName()=='jugadores.index') active @endif" href="{{ route('jugadores.index') }}">Jugadores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Partidos</a>
+                            <a class="nav-link @if(Route::current()->getName()=='partidos.index') active @endif" href="{{route('partidos.index')}}">Partidos</a>
                         </li>
 
                         <li class="nav-item dropdown">

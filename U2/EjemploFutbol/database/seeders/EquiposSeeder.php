@@ -22,6 +22,7 @@ class EquiposSeeder extends Seeder
             ['nombre' => 'Unión Española','entrenador' => 'César Bravo','created_at'=>Carbon::now()],
             ['nombre' => 'Colo Colo','entrenador' => 'Gustavo Quinteros','created_at'=>Carbon::now()],
             ['nombre' => 'Universidad de Chile','entrenador' => 'Santiago Escobar','created_at'=>Carbon::now()],
+            ['nombre' => 'Ñublense','entrenador' => 'Jaime García','created_at'=>Carbon::now()],
         ]);
     }
 }
