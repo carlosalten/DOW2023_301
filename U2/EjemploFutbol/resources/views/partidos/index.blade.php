@@ -38,19 +38,19 @@ $estados = [0 => 'Pendiente',1=>'En Juego',2=>'Finalizado'];
                     <td class="align-middle">{{ $carbon::parse($partido->fecha)->format('d/m/Y') }}</td>
                     <td class="align-middle">{{ $estados[$partido->estado] }}</td>
                     <td class="align-middle">
-                        @if($partido->equipos!=null)
-                        {{$partido->equipos->where('pivot.es_local',true)->first()->nombre}}
-                        <span class="fw-bold">({{$partido->equipos->where('pivot.es_local',true)->first()->pivot->goles}})</span>
+                        @if(count($partido->equiposConPivot)>0)
+                        {{$partido->equiposConPivot->where('pivot.es_local',true)->first()->nombre}}
+                        <span class="fw-bold">({{$partido->equiposConPivot->where('pivot.es_local',true)->first()->pivot->goles}})</span>
                         @else
-                        <span class="fs-italic">Sin equipos</span>
+                        <span class="fs-italic">Sin equipo local</span>
                         @endif
                     </td>
                     <td class="align-middle">
-                        @if($partido->equipos!=null)
-                        {{$partido->equipos->where('pivot.es_local',false)->first()->nombre}}
-                        <span class="fw-bold">({{$partido->equipos->where('pivot.es_local',false)->first()->pivot->goles}})</span>
+                        @if(count($partido->equiposConPivot)>0)
+                        {{$partido->equiposConPivot->where('pivot.es_local',false)->first()->nombre}}
+                        <span class="fw-bold">({{$partido->equiposConPivot->where('pivot.es_local',false)->first()->pivot->goles}})</span>
                         @else
-                        <span class="fs-italic">Sin equipos</span>
+                        <span class="fs-italic">Sin equipo visita</span>
                         @endif
                     </td>
                     <td>

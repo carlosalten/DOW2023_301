@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Partido;
+use App\Models\Equipo;
 use Illuminate\Http\Request;
 
 class PartidosController extends Controller
@@ -11,7 +13,11 @@ class PartidosController extends Controller
      */
     public function index()
     {
+        //partidos ordenados por fecha
+        //el más reciente primero
+        $partidos = Partido::orderByDesc('fecha')->get();
 
+        return view('partidos.index',compact('partidos'));
     }
 
     /**
@@ -19,7 +25,8 @@ class PartidosController extends Controller
      */
     public function create()
     {
-        
+        $equipos = Equipo::orderBy('nombre')->get();
+        return view('partidos.create',compact('equipos'));
     }
 
     /**
@@ -27,7 +34,19 @@ class PartidosController extends Controller
      */
     public function store(Request $request)
     {
+        //insertar en tabla partido
+        //al guardar $partido obtiene el ID generado por la BD
+        $partido = new Partido();
+        $partido->fecha = $request->fecha;
+        $partido->estado = $request->estado;
+        $partido->save();
 
+        //insertar equipos del partido
+        $partido->equipos()->attach($request->equipo_local,['es_local'=>true]);
+        $partido->equipos()->attach($request->equipo_visita,['es_local'=>false]);
+
+        //redireccionar a pagina de partidos
+        return redirect()->route('partidos.index');
     }
 
     /**

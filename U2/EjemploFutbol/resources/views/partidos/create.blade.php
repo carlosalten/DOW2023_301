@@ -28,19 +28,19 @@
                     <label class="form-label">Estado</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="estado" id="estado_pendiente" value="0" checked>
-                        <label class="form-check-label" for="pos_arquero">
+                        <label class="form-check-label" for="estado_pendiente">
                             Pendiente
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="estado" id="estado_en_juego" value="1">
-                        <label class="form-check-label" for="pos_defensa">
+                        <label class="form-check-label" for="estado_en_juego">
                             En Juego
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="estado" id="estado_finalizado" value="2">
-                        <label class="form-check-label" for="pos_volante">
+                        <label class="form-check-label" for="estado_finalizado">
                             Finalizado
                         </label>
                     </div>
@@ -49,9 +49,9 @@
                 <div class="mb-3">
                     <label class="form-label" for="equipo_local">Equipo Local</label>
                     <select id="equipo_local" name="equipo_local" class="form-control">
-                        {{-- @foreach($equipos as $equipo)
+                        @foreach($equipos as $equipo)
                         <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
 
@@ -59,9 +59,9 @@
                 <div class="mb-3">
                     <label class="form-label" for="equipo_visita">Equipo Visita</label>
                     <select id="equipo_visita" name="equipo_visita" class="form-control">
-                        {{-- @foreach($equipos as $equipo)
+                        @foreach($equipos as $equipo)
                         <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
 
