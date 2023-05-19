@@ -62,7 +62,12 @@ class PartidosController extends Controller
      */
     public function edit(Partido $partido)
     {
+        $equipos = Equipo::orderBy('nombre')->get();
 
+        $equipoLocal = $partido->equiposConPivot->where('pivot.es_local',true)->first();
+        $equipoVisita = $partido->equiposConPivot->where('pivot.es_local',false)->first();
+
+        return view('partidos.edit',compact(['partido','equipos','equipoLocal','equipoVisita']));
     }
 
     /**
@@ -70,7 +75,30 @@ class PartidosController extends Controller
      */
     public function update(Request $request, Partido $partido)
     {
+        //actualizar los datos en tabla partido
+        $partido->fecha = $request->fecha;
+        $partido->estado = $request->estado;
+        $partido->save();
 
+        //actualizar datos en tabla interseccion (equipos y/o goles)
+        //goles
+        $equipoLocal = $partido->equiposConPivot->where('pivot.es_local',true)->first();
+        $equipoVisita = $partido->equiposConPivot->where('pivot.es_local',false)->first();
+        
+        $partido->equiposConPivot()->updateExistingPivot($equipoLocal->id,['goles'=>$request->goles_local]);
+        $partido->equiposConPivot()->updateExistingPivot($equipoVisita->id,['goles'=>$request->goles_visita]);
+
+        //equipos
+        if($equipoLocal->id != $request->equipo_local){
+            $partido->equiposConPivot()->updateExistingPivot($equipoLocal->id,['equipo_id'=>$request->equipo_local]);
+        }
+        if($equipoVisita->id != $request->equipo_visita){
+            $partido->equiposConPivot()->updateExistingPivot($equipoVisita->id,['equipo_id'=>$request->equipo_visita]);
+        }
+
+
+        //redireccionar a vista que lista partidos
+        return redirect()->route('partidos.index');
     }
 
     /**
@@ -78,6 +106,8 @@ class PartidosController extends Controller
      */
     public function destroy(Partido $partido)
     {
- 
+        $partido->equipos()->detach();
+        $partido->delete();
+        return redirect()->route('partidos.index');
     }
 }

@@ -67,9 +67,11 @@ $estados = [0 => 'Pendiente',1=>'En Juego',2=>'Finalizado'];
                             </div>
                             {{-- Editar --}}
                             <div class="col text-center">
+                                @if(count($partido->equiposConPivot)>0)
                                 <a href="{{route('partidos.edit',$partido->id)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Partido">
                                     <span class="material-icons">edit</span>
                                 </a>
+                                @endif
                             </div>
                         </div>
                     </td>
