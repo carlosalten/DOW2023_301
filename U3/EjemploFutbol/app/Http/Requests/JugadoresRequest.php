@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\NumeroCamisetaRepetidoRule;
 
 class JugadoresRequest extends FormRequest
 {
@@ -26,9 +27,9 @@ class JugadoresRequest extends FormRequest
             'rut' => 'required|min:9|max:10',
             'nombre' => 'required|alpha|min:2|max:30',
             'apellido' => 'required|alpha',
-            'numero_camiseta' => 'bail|required|integer|gte:1|lte:99',
+            'numero_camiseta' => ['bail','required','integer','gte:1','lte:99',new NumeroCamisetaRepetidoRule(request('equipo'))],
             'posicion' => ['required',Rule::in(['Arquero','Defensa','Volante','Delantero'])],
-            'equipo' => 'required',
+            'equipo' => 'required|integer|min:1|exists:equipos,id',
         ];
     }
 
@@ -49,6 +50,9 @@ class JugadoresRequest extends FormRequest
             'posicion.required' => 'Indique la Posición en el campo',
             'posicion.in' => 'Posición no válida',
             'equipo.required' => 'Indique el Equipo del Jugador',
+            'equipo.integer'=>'Equipo no válido',
+            'equipo.min'=>'Equipo no válido',
+            'equipo.exists' => 'Equipo no existe',
         ];
     }
 }
