@@ -50,30 +50,58 @@
                         @endif
                     </td>
                     <td>
+                        <!-- Modal -->
+                        <div class="modal fade" id="borrarModal{{$jugador->rut}}" tabindex="-1" aria-labelledby="borrarModalLabel{{$jugador->rut}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="borrarModalLabel{{$jugador->rut}}">Confirmación de Borrado</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="POST" action="{{route('jugadores.destroy',$jugador->rut)}}">
+                                        @method('delete')
+                                        @csrf
+                                        <div class="modal-body">
+                                            ¿Borrar al jugador <span class="text-danger fw-bold">{{$jugador->nombre}} {{$jugador->apellido}}</span> del equipo <span class="fw-bold">{{$jugador->equipo->nombre}}</span>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Borrar Jugador</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             {{-- borrar --}}
                             <div class="col text-end">
+                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#borrarModal{{$jugador->rut}}">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                            {{-- <div class="col text-end">
                                 <form method="POST" action="{{route('jugadores.destroy',$jugador->rut)}}">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="btn btn-sm btn-danger">
-                                        <span class="material-icons">delete</span>
-                                    </button>
-                                </form>
-                            </div>
-                            {{-- editar --}}
-                            <div class="col">
-                                <a href="{{route('jugadores.edit',$jugador->rut)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
-                                    <span class="material-icons">edit</span>
-                                </a>
-                            </div>
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <span class="material-icons">delete</span>
+                            </button>
+                            </form>
+                        </div> --}}
+                        {{-- editar --}}
+                        <div class="col">
+                            <a href="{{route('jugadores.edit',$jugador->rut)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Jugador">
+                                <span class="material-icons">edit</span>
+                            </a>
                         </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
+    </td>
+    </tr>
+    @endforeach
+    </tbody>
+    </table>
+</div>
 </div>
 
 {{-- volver --}}
