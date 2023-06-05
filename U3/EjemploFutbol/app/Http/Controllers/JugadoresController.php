@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jugador;
 use App\Models\Equipo;
+use App\Http\Requests\JugadoresRequest;
 
 class JugadoresController extends Controller
 {
@@ -19,7 +20,7 @@ class JugadoresController extends Controller
         return view('jugadores.create',compact('equipos'));
     }
 
-    public function store(Request $request){
+    public function store(JugadoresRequest $request){
         $jugador = new Jugador();
         $jugador->rut = $request->rut;
         $jugador->nombre = $request->nombre;
