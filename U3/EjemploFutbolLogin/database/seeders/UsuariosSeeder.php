@@ -16,8 +16,8 @@ class UsuariosSeeder extends Seeder
     {
         DB::table('usuarios')->insert([
             ['email' => 'admin1@gmail.com','password' => Hash::make('1234'),'nombre'=>'Admin 1','rol_id'=>1],           
-            ['email' => 'presidente1@gmail.com','password' => Hash::make('5678'),'nombre'=>'Jugador 1','rol_id'=>2],
-            ['email' => 'presidente2@gmail.com','password' => Hash::make('8899'),'nombre'=>'Jugador 2','rol_id'=>2],
+            ['email' => 'presidente1@gmail.com','password' => Hash::make('5678'),'nombre'=>'Presidente 1','rol_id'=>2],
+            ['email' => 'presidente2@gmail.com','password' => Hash::make('8899'),'nombre'=>'Presidente 2','rol_id'=>2],
         ]);
     }
 }

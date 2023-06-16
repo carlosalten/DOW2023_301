@@ -43,9 +43,11 @@
                         <li class="nav-item">
                             <a class="nav-link @if(str_starts_with(Route::current()->getName(),'equipos')) active @endif" href="{{ route('equipos.index') }}">Equipos</a>
                         </li>
+                        {{-- @if(Gate::allows('estadios-listar')) --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Estadios</a>
+                            <a class="nav-link @if(Gate::denies('estadios-listar')) disabled @endif" href="#">Estadios</a>
                         </li>
+                        {{-- @endif --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadísticas</a>
                         </li>
@@ -63,7 +65,9 @@
                             <ul class="dropdown-menu dropdown-menu-dark bg-primary">
                                 <li><a class="dropdown-item" href="{{route('usuarios.cambiarcontrasena')}}">Cambiar Contraseña</a></li>
                                 <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
+                                @if(Gate::allows('usuarios-listar'))
                                 <li><a class="dropdown-item" href="{{route('usuarios.index')}}">Usuarios</a></li>
+                                @endif
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

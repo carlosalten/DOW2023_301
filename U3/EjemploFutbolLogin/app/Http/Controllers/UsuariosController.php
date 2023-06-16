@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UsuariosRequest;
 use App\Http\Requests\CambiarContrasenaRequest;
 use Illuminate\Support\Facades\Hash;
+use Gate;
 
 class UsuariosController extends Controller
 {
@@ -24,7 +25,7 @@ class UsuariosController extends Controller
         $email = $request->email;
         $password = $request->password;
         
-        if(Auth::attempt(['email'=>$email,'password'=>$password])){
+        if(Auth::attempt(['email'=>$email,'password'=>$password,'activo'=>true])){
             Auth::user()->registraUltimoLogin();
             return redirect()->route('home.index');
         }
@@ -71,6 +72,10 @@ class UsuariosController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('usuarios-listar')){
+            return redirect()->route('home.index');
+        }
+
         $roles = Rol::orderBy('nombre')->get();
         $usuarios = Usuario::orderBy('nombre')->get();
         return view('usuarios.index',compact(['usuarios','roles']));

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,6 +21,17 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('usuarios-listar',function($usuario){
+            // if($usuario->rol->nombre=='Administrador'){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+            return $usuario->rol->nombre=='Administrador';
+        });
+
+        Gate::define('estadios-listar',function($usuario){
+            return $usuario->rol->nombre=='Administrador' || $usuario->rol->nombre=='Presidente Club';
+        });
     }
 }

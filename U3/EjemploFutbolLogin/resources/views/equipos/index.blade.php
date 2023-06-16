@@ -14,7 +14,7 @@
 
 <div class="row">
     <!-- tabla -->
-    <div class="col-12 col-lg-8 order-last order-lg-first">
+    <div class="col-12 @if(Gate::allows('usuarios-listar')) col-lg-8 @endif order-last order-lg-first">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -22,7 +22,9 @@
                     <th>Nombre</th>
                     <th>Entrenador</th>
                     <th>Jugadores</th>
+                    @if(Gate::allows('usuarios-listar'))
                     <th>Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +34,7 @@
                     <td class="align-middle">{{ $equipo->nombre }}</td>
                     <td class="align-middle">{{ $equipo->entrenador }}</td>
                     <td>{{ count($equipo->jugadores) }}</td>
+                    @if(Gate::allows('usuarios-listar'))
                     <td>
                         <div class="row">
                             {{-- Borrar --}}
@@ -61,6 +64,7 @@
                             </div>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
@@ -68,6 +72,7 @@
     </div>
 
     <!-- form agregar equipo -->
+    @if(Gate::allows('usuarios-listar'))
     <div class="col-12 col-lg-4 order-first order-lg-last">
         <div class="card">
             <div class="card-header bg-dark text-white">Agregar Equipo</div>
@@ -103,6 +108,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endsection
 
